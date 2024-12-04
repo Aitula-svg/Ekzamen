@@ -4,7 +4,7 @@ import { LoadingIcon } from "./Icons";
 import { useEffect, useState } from "react";
 import { fetchProducts } from "../thunks/productAthynkThunk";
 import { decrementQuantity, incrementQuantity } from "../slices/productSlice";
-
+import styled from "styled-components";
 
 const Product = ({
   id,
@@ -25,18 +25,18 @@ const Product = ({
       <td>{orderedQuantity}</td>
       <td>${total}</td>
       <td>
-        <button
+        <StyleButton
           className={styles.actionButton}
           onClick={() => dispatch(incrementQuantity(id))}
         >
           +
-        </button>
-        <button
+        </StyleButton>
+        <StyleButton
           className={styles.actionButton}
           onClick={() => dispatch(decrementQuantity(id))}
         >
           -
-        </button>
+        </StyleButton>
       </td>
     </tr>
   );
@@ -104,4 +104,6 @@ const Checkout = () => {
 
 export default Checkout;
 
-
+const StyleButton = styled.button`
+  cursor: pointer;
+`;
